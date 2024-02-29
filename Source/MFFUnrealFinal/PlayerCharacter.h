@@ -35,7 +35,8 @@ public:
 
 	void UseAbility();
 
-	static constexpr float MAX_ABILITY_TIME = 10.f;
+	static constexpr float MAX_ABILITY_TIME = 5.f;
+	static constexpr float FLY_HEIGHT = 100.f;
 
 private:
 	AbilityType CurrentAbility = AbilityType::NONE;

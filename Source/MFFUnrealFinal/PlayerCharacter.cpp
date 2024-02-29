@@ -2,6 +2,7 @@
 
 
 #include "PlayerCharacter.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
 APlayerCharacterBase::APlayerCharacterBase()
@@ -45,8 +46,11 @@ void APlayerCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 
 void APlayerCharacterBase::UseAbility()
 {
+	UE_LOG(LogTemp, Warning, TEXT("using ability"));
+
 	if (CurrentAbility == AbilityType::NONE)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("no ability"));
 		return;
 	}
 
@@ -59,8 +63,18 @@ void APlayerCharacterBase::ActivateAbility()
 	switch (CurrentAbility)
 	{
 	case AbilityType::LEVITATION:
+	{
+		UE_LOG(LogTemp, Warning, TEXT("levitation begin"));
+
+		GetCharacterMovement()->GravityScale = 0.;
+		FVector Location = GetActorLocation();
+		Location.Z += FLY_HEIGHT;
+		SetActorLocation(Location);
+
 		break;
+	}
 	case AbilityType::TIME_SLOWDOWN:
+		UE_LOG(LogTemp, Warning, TEXT("time slowdown begin"));
 		break;
 	}
 }
@@ -70,8 +84,19 @@ void APlayerCharacterBase::DeactivateAbility()
 	switch (CurrentAbility)
 	{
 	case AbilityType::LEVITATION:
+	{
+		UE_LOG(LogTemp, Warning, TEXT("levitation end"));
+
+		GetCharacterMovement()->GravityScale = 1.;
+		//FVector Location = GetActorLocation();
+		//Location.Z = 0.;
+		//SetActorLocation(Location);
+
 		break;
+	}
 	case AbilityType::TIME_SLOWDOWN:
+		UE_LOG(LogTemp, Warning, TEXT("time slowdown end"));
+
 		break;
 	}
 }
