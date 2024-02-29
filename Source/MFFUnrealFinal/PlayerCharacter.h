@@ -35,7 +35,7 @@ public:
 
 	void UseAbility();
 
-	static constexpr float AbilityTime = 10.f;
+	static constexpr float MAX_ABILITY_TIME = 10.f;
 
 private:
 	AbilityType CurrentAbility = AbilityType::NONE;

@@ -27,7 +27,7 @@ void APlayerCharacterBase::Tick(float DeltaTime)
 	{
 		AbilityTimeAccumulator += DeltaTime;
 
-		if (AbilityTimeAccumulator >= AbilityTime)
+		if (AbilityTimeAccumulator >= MAX_ABILITY_TIME)
 		{
 			AbilityTimeAccumulator = 0.f;
 			bAbilityActive = false;
@@ -56,10 +56,22 @@ void APlayerCharacterBase::UseAbility()
 
 void APlayerCharacterBase::ActivateAbility()
 {
-
+	switch (CurrentAbility)
+	{
+	case AbilityType::LEVITATION:
+		break;
+	case AbilityType::TIME_SLOWDOWN:
+		break;
+	}
 }
 
 void APlayerCharacterBase::DeactivateAbility()
 {
-
+	switch (CurrentAbility)
+	{
+	case AbilityType::LEVITATION:
+		break;
+	case AbilityType::TIME_SLOWDOWN:
+		break;
+	}
 }
