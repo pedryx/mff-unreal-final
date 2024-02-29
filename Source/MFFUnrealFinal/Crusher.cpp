@@ -17,7 +17,6 @@ void ACrusherBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	checkf(Instance == nullptr, TEXT("One crusher already exist."));
 	Instance = this;
 }
 

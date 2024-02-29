@@ -66,23 +66,14 @@ void ADefaultPlayerControllerBase::HandleMove(const FInputActionValue& InputActi
 {
 	const float MovementDir = InputActionValue.Get<float>();
 
-	FVector OriginalLocation = PlayerCharacter->GetActorLocation();
-	FVector NewLocation = OriginalLocation + PlayerCharacter->GetActorForwardVector() * 100. * MovementDir;
-
-	FHitResult HitResult;
-	PlayerCharacter->SetActorLocation(NewLocation, true, &HitResult);
-
-	if (HitResult.bBlockingHit)
-	{
-		PlayerCharacter->SetActorLocation(OriginalLocation);
-	}
+	PlayerCharacter->AddMovementInput(PlayerCharacter->GetActorForwardVector(), MovementDir);
 }
 
 void ADefaultPlayerControllerBase::HandleLook(const FInputActionValue& InputActionValue)
 {
 	const float LookDir = InputActionValue.Get<float>();
 
-	RotationInput.Add(0., 90. * LookDir, 0.);
+	AddYawInput(LookDir);
 }
 
 void ADefaultPlayerControllerBase::HandleActivateAbility()
