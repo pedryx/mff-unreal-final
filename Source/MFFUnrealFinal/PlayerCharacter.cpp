@@ -54,7 +54,14 @@ void APlayerCharacterBase::UseAbility()
 		return;
 	}
 
+	if (bAbilityActive)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("ability already active"));
+		return;
+	}
+
 	bAbilityActive = true;
+	UsedAbility = CurrentAbility;
 	ActivateAbility();
 }
 
@@ -81,7 +88,7 @@ void APlayerCharacterBase::ActivateAbility()
 
 void APlayerCharacterBase::DeactivateAbility()
 {
-	switch (CurrentAbility)
+	switch (UsedAbility)
 	{
 	case AbilityType::LEVITATION:
 	{

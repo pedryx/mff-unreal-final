@@ -40,6 +40,7 @@ public:
 
 private:
 	AbilityType CurrentAbility = AbilityType::NONE;
+	AbilityType UsedAbility = AbilityType::NONE;
 	float AbilityTimeAccumulator = 0.f;
 	bool bAbilityActive = false;
 
