@@ -87,7 +87,7 @@ void APlayerCharacterBase::ActivateAbility()
 
 			if (Crusher == nullptr)
 			{
-				Crusher = ACrusherBase::GetInstance();
+				//Crusher = ACrusherBase::GetInstance();
 				checkf(Crusher, TEXT("Reference to crusher is not set."));
 			}
 

@@ -2,6 +2,7 @@
 
 
 #include "Crusher.h"
+#include "DefaultPlayerController.h"
 
 // Sets default values
 ACrusherBase::ACrusherBase()
@@ -15,12 +16,30 @@ ACrusherBase::ACrusherBase()
 void ACrusherBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	//if (Instance == nullptr)
+	{
+		//Instance = this;
+	}
 }
 
 // Called every frame
 void ACrusherBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-}
 
+	FVector Location = GetActorLocation();
+
+	if (Location.Z >= MAX_HEIGHT)
+	{
+		Direction = -1.f;
+	}
+	if (Location.Z <= MIN_HEIGHT)
+	{
+		Direction = 1.f;
+	}
+
+	Location.Z += DeltaTime * Direction * SPEED * (bSlowed ? 0.1f : 1.f);
+
+	SetActorLocation(Location);
+}

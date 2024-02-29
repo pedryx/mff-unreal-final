@@ -31,6 +31,8 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player Input")
 	TObjectPtr<UInputMappingContext> InputMappingContext = nullptr;
 
+	UPROPERTY()
+	APlayerCharacterBase* PlayerCharacter = nullptr;
 protected:
 	virtual void OnPossess(APawn* aPawn) override;
 	virtual void OnUnPossess() override;
@@ -42,9 +44,6 @@ protected:
 private:
 	UPROPERTY()
 	UEnhancedInputComponent* EnhancedInputComponent = nullptr;
-
-	UPROPERTY()
-	APlayerCharacterBase* PlayerCharacter = nullptr;
 
 	GENERATED_BODY()
 };

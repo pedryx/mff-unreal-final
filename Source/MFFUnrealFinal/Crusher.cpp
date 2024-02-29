@@ -2,6 +2,7 @@
 
 
 #include "Crusher.h"
+#include "DefaultPlayerController.h"
 
 // Sets default values
 ACrusherBase::ACrusherBase()
@@ -15,7 +16,9 @@ ACrusherBase::ACrusherBase()
 void ACrusherBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	checkf(Instance == nullptr, TEXT("One crusher already exist."));
+	Instance = this;
 }
 
 // Called every frame
@@ -34,8 +37,7 @@ void ACrusherBase::Tick(float DeltaTime)
 		Direction = 1.f;
 	}
 
-	Location.Z += Direction * SPEED * DeltaTime;
+	Location.Z += DeltaTime * Direction * SPEED * (bSlowed ? 0.1f : 1.f);
 
 	SetActorLocation(Location);
 }
-

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "AbilityType.h"
+#include "Crusher.h"
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
@@ -22,6 +23,7 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -43,6 +45,7 @@ private:
 	AbilityType UsedAbility = AbilityType::NONE;
 	float AbilityTimeAccumulator = 0.f;
 	bool bAbilityActive = false;
+	ACrusherBase* Crusher = nullptr;
 
 	void ActivateAbility();
 	void DeactivateAbility();
