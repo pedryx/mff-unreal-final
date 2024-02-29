@@ -35,9 +35,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	AbilityType GetAbility() const { return CurrentAbility; }
 
-	UFUNCTION(BlueprintCallable)
-	bool HasAbilityActive() const { return bAbilityActive; }
-
 	void UseAbility();
 
 	static constexpr float MAX_ABILITY_TIME = 5.f;
